@@ -4,12 +4,13 @@ import Input from "@mui/material/Input";
 import useStyles from "./style";
 import UserCardList from "../UserCardList";
 import { StateContext, StateStore } from "../../Mobx/store";
+import { observer } from "mobx-react-lite";
 
-const SearchInput: FC = () => {
+const SearchInput: FC = observer(() => {
   const classes = useStyles();
   const [query, setQuery] = useState("");
   const state: StateStore = useContext(StateContext);
-  const data = state.users;
+  const data = state.users.users;
 
   return (
     <>
@@ -32,6 +33,6 @@ const SearchInput: FC = () => {
       />
     </>
   );
-};
+});
 
 export default SearchInput;
